@@ -1,30 +1,19 @@
 const jwt = require('jsonwebtoken');
 
-exports.identifier = (roles = []) => async(req ,res , next) => {
-    let token ;
-
-    if(req.headers.client === "not browser") {
-        token = req.headers.authorization;
-
-    } else{
-        token = req.cookies?.Authorization;
+exports.identifer = (roles = []) => async(req,res,next) => {
+    let token = req.headers.authorization || req.cookies['Authorization'];
+    if (!token) {
+      return res.status(403).json({ success: false, message: "Unauthorized" });
     }
-
-    if(!token){
-        return res.status(403).json({
-            success : false,
-            message : "Token not found"
-
-        })
-    }
-
+    
+    
     try {
          if(token.startsWith("Bearer ") ){
-            token = token.split("")[1];
+            token = token.split(" ")[1];
 
          }
 
-         const decoded = jwt.verify(token , process.env.JWT_SECRET);
+         const decoded = jwt.verify(token , process.env.SECRET_KEY);
 
          if(roles.length && !roles.includes(decoded.roles)) {
             return res.status(403).json({

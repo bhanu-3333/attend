@@ -22,13 +22,18 @@ const Login = () => {
       if (res.data.success) {
         // Save the token if needed
         localStorage.setItem('token', res.data.token);
-        navigate('/'); // Redirect after successful login
+        console.log("Login successful");
+        navigate('/dashboard');
+        // Redirect after successful login
       } else {
         setError('Login failed. Please try again.');
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed. Please try again.');
     }
+    
+
+
   };
 
   return (
