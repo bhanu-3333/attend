@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./Routes/authRoutes');
+const atdRoutes = require('./Routes/attendanceRoutes');
 const cookieParser = require('cookie-parser')
 
 const cors = require('cors')
@@ -11,7 +12,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors())
 
-app.use('/api', authRoutes);
+app.use('/api', authRoutes, atdRoutes);
+
 
 mongoose.connect('mongodb+srv://naveen:95144@cluster0.ij3t1.mongodb.net/').then ( () =>{
     console.log('database connected');
