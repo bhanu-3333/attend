@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: '',
+   
     password: '',
-    rollNo: '',
+    rollNo: 0,
     roles: 'student',
   });
   const [error, setError] = useState('');
@@ -17,12 +17,12 @@ const Login = () => {
     setError('');
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/signin', formData);
+      const res = await axios.post('http://localhost:5000/api/login', formData);
       
       if (res.data.success) {
         // Save the token if needed
         localStorage.setItem('token', res.data.token);
-        navigate('/profile'); // Redirect after successful login
+        navigate('/'); // Redirect after successful login
       } else {
         setError('Login failed. Please try again.');
       }
@@ -36,13 +36,7 @@ const Login = () => {
       <h2>Login</h2>
       {error && <div style={{ color: 'red' }}>{error}</div>}
       <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          value={formData.email}
-          placeholder="Email"
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          required
-        />
+        
         <input
           type="number"
           value={formData.rollNo}
