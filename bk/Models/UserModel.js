@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: [true,"RollNo is required"],
         unique : true,
-        trim : true,
+       
     },
 
     password: {
@@ -32,8 +32,9 @@ const userSchema = new mongoose.Schema({
         type : String
     },
 
-    class : {
-        type : String
+    className : {
+        type : String,
+        trim : true
     },
     timetable : [
         {
