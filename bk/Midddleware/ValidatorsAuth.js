@@ -8,7 +8,7 @@ exports.registerSchema = joi.object({
 
     }).required(),
     roles : joi.string().valid('student','staff' ,'hod').required(),
-}),
+});
 
 exports.loginSchema = joi.object({
     rollNo : joi.number().required(),
@@ -16,7 +16,7 @@ exports.loginSchema = joi.object({
     email : joi.string().email({
         tlds: { allow: ['com', 'net'] }
 
-    }).required(),
+    }),
     roles : joi.string().valid('student','staff' ,'hod').required(),
          
-}),
+});
