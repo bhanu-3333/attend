@@ -6,6 +6,12 @@ import Dashboard from './pages/Dashboard.jsx'
 
 
 function App() {
+  // need to add more routes on by on e
+  // timeytable at dahboard
+  // profile
+  //internal marks
+  //od/leave submission
+  
 
 
   return (
