@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Login.css'; // ✅ Import the CSS
 
 const Login = () => {
   const [formData, setFormData] = useState({
-   
     password: '',
     rollNo: 0,
     roles: 'student',
@@ -18,30 +18,24 @@ const Login = () => {
 
     try {
       const res = await axios.post('http://localhost:5000/api/login', formData);
-      
+
       if (res.data.success) {
-        // Save the token if needed
         localStorage.setItem('token', res.data.token);
         console.log("Login successful");
         navigate('/dashboard');
-        // Redirect after successful login
       } else {
         setError('Login failed. Please try again.');
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed. Please try again.');
     }
-    
-
-
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h2>Login</h2>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
+      {error && <div className="error-message">{error}</div>}
       <form onSubmit={handleSubmit}>
-        
         <input
           type="number"
           value={formData.rollNo}

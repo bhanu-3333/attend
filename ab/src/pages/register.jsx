@@ -1,7 +1,8 @@
-import {useState} from 'react'
-import axios from 'axios'
+import { useState } from 'react';
+import axios from 'axios';
+import '../styles/Register.css'; // ✅ Import CSS
 
-const register = () => {
+const Register = () => {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -35,11 +36,11 @@ const register = () => {
     };
 
     return (
-        <div>
+        <div className="register-container">
             <h2>Create Account</h2>
             <p>Register for institutional access</p>
-            {error && <div style={{ color: 'red' }}>{error}</div>}
-            {success && <div style={{ color: 'green' }}>{success}</div>}
+            {error && <div className="error-message">{error}</div>}
+            {success && <div className="success-message">{success}</div>}
             <form onSubmit={handleSubmit}>
                 <input
                     type='email'
@@ -77,4 +78,5 @@ const register = () => {
         </div>
     );
 };
-export default register
+
+export default Register;
