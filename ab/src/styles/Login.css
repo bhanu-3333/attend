@@ -38,24 +38,36 @@ body {
   
   input, select {
     background: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
+    color: #000000;
   }
   
   input::placeholder {
-    color: #d3d3d3;
+    color: #0a0505;
   }
   
   button {
-    background-color: #1f4068;
+    background-color: #16477c; /* Dark Blue */
     color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  button:hover {
-    background-color: #163a66;
-  }
-  
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    transform: translateY(-5px); /* Moves up */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Increases shadow */
+}
+
+button:active {
+    transform: translateY(2px); /* Moves down when pressed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduces shadow */
+}
+
+
   a {
     color: #4da8da;
     text-decoration: none;
@@ -70,3 +82,6 @@ body {
     margin-bottom: 10px;
   }
   
+  .field{
+    color: black;
+  }
