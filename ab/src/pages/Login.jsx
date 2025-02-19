@@ -50,7 +50,7 @@ const Login = () => {
           onChange={(e) => setFormData({ ...formData, password: e.target.value })}
           required
         />
-        <select
+        <select class="field"
           value={formData.roles}
           onChange={(e) => setFormData({ ...formData, roles: e.target.value })}
           required
